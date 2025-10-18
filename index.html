@@ -385,7 +385,119 @@
                 margin: 5px 0;
             }
         }
-    </style>
+    
+/* ------------------- ENHANCED MOBILE OPTIMIZATION ------------------- */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.95em;
+        padding: 0;
+    }
+
+    nav {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar { display: none; }
+    nav a {
+        flex: 0 0 auto;
+        padding: 10px 15px;
+        margin: 0 8px;
+        font-size: 0.9em;
+        background: rgba(30, 30, 30, 0.6);
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 2em;
+        padding-top: 20px;
+    }
+
+    h2 {
+        font-size: 1.6em;
+        margin: 30px 0 20px;
+    }
+
+    .pricing-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .price {
+        font-size: 2em;
+    }
+
+    .cta-button {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1em;
+    }
+
+    .selection-buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .selector-btn {
+        flex: 1 1 45%;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .plan-option-card {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+
+    .bundle-configurator {
+        padding: 20px;
+        gap: 25px;
+    }
+
+    .bundle-summary {
+        padding: 20px;
+    }
+
+    #total-price-display {
+        font-size: 2.2em;
+    }
+
+    footer {
+        padding: 20px 10px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .price {
+        font-size: 1.8em;
+    }
+
+    .cta-button {
+        font-size: 0.9em;
+        padding: 12px 0;
+    }
+
+    .selector-btn {
+        flex: 1 1 100%;
+    }
+
+    nav a {
+        font-size: 0.8em;
+    }
+}
+
+</style>
 </head>
 <body>
 
