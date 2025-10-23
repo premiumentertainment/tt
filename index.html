@@ -496,6 +496,89 @@
         font-size: 0.8em;
     }
 }
+/* ------------------- IMAGE SLIDESHOW STYLES ------------------- */
+.image-slideshow {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+}
+
+.slideshow-container {
+    position: relative;
+    height: 400px;
+    background-color: var(--card-bg);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-bottom: 15px;
+    background-color: var(--card-bg); /* Adds background color around images if they have transparent areas */
+}
+
+.slide-caption {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.slideshow-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .slideshow-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slideshow-container {
+        height: 250px;
+    }
+}
 
 </style>
 </head>
@@ -642,6 +725,10 @@
             </div>
         </div>
     </section>
+
+
+                            <!-- QUALITY SECTION -->
+
     
     <section id="features" class="container">
         <h2>What You Get: Quality & Reliability</h2>
@@ -673,6 +760,37 @@
                 <p>Unmatched 99.9% Uptime Guarantee Powered by a <strong>high-speed, global CDN,</strong> our service guarantees <strong>minimal buffering</strong> and <strong>instantaneous channel switching</strong>. We deliver a smooth, reliable stream straight to you, every time, no matter your location.</p>
                 <p style="font-style: italic;"><strong>Note:</strong> Multi-device access and concurrent streams governed by your chosen package.</p>
             </div>
+
+            <!-- NEW IMAGE SLIDESHOW SECTION -->
+<div class="image-slideshow">
+    <div class="slideshow-container">
+        <div class="slide active">
+            <img src="2.png" alt="1080P vs 4K Resolution Comparison">
+            <div class="slide-caption">1080P vs 4K Resolution Comparison</div>
+        </div>
+
+        <div class="slide">
+            <img src="3.png" alt="Bitrate Comparison">
+            <div class="slide-caption">4k Low Bitrate vs 4k High Bitrate</div>
+        </div>
+        <div class="slide">
+            <img src="4.png" alt="SD vs HD vs 4K Comparison">
+            <div class="slide-caption">1080P vs 4K Resolution Comparison</div>
+        </div>
+        <div class="slide">
+            <img src="1.jpg" alt="4K High vs Low Bitrate">
+            <div class="slide-caption">720p vs 4k vs 1080p Resolution Comparison</div>
+        </div>
+
+    </div>
+    <div class="slideshow-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
+    </div>
+</div>
+<!-- END IMAGE SLIDESHOW SECTION -->
             
         </div>
     </section>
@@ -784,28 +902,72 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
+
+            // --- IMAGE SLIDESHOW FUNCTIONALITY ---
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const slideInterval = 5000; // 5 seconds between slides
+
+function showSlide(n) {
+    // Hide all slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Show the selected slide
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+// Set up automatic slideshow
+let slideTimer = setInterval(nextSlide, slideInterval);
+
+// Add click handlers for dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        clearInterval(slideTimer);
+        showSlide(index);
+        slideTimer = setInterval(nextSlide, slideInterval);
+    });
+});
+
+// Pause slideshow on hover
+const slideshowContainer = document.querySelector('.slideshow-container');
+slideshowContainer.addEventListener('mouseenter', () => {
+    clearInterval(slideTimer);
+});
+
+slideshowContainer.addEventListener('mouseleave', () => {
+    slideTimer = setInterval(nextSlide, slideInterval);
+});
+
             // --- 1. PRICE DATA STRUCTURES ---
             // Key format: "[devices]-[duration_in_months]"
             
             const tvPricingData = {
-                '1-6':  { price: 385.00, term: '/6-mo', months: 6, planName: '6 Month TV Plan' }, 
-                '1-12': { price: 450.00, term: '/yr', months: 12, planName: '1 Year TV Plan' },
-                '1-36': { price: 1000.00, term: '/3-yrs', months: 36, planName: '3 Year TV Plan' },
+                '1-6':  { price: 384.99, term: '/6-mo', months: 6, planName: '6 Month TV Plan' }, 
+                '1-12': { price: 449.99, term: '/yr', months: 12, planName: '1 Year TV Plan' },
+                '1-36': { price: 999.99, term: '/3-yrs', months: 36, planName: '3 Year TV Plan' },
                 // 2 Device Prices
-                '2-6':  { price: 500.00, term: '/6-mo', months: 6, planName: '6 Month TV Plan' },
-                '2-12': { price: 600, term: '/yr', months: 12, planName: '1 Year TV Plan' },
-                '2-36': { price: 1300, term: '/3-yrs', months: 36, planName: '3 Year TV Plan' },
+                '2-6':  { price: 499.99, term: '/6-mo', months: 6, planName: '6 Month TV Plan' },
+                '2-12': { price: 599.99, term: '/yr', months: 12, planName: '1 Year TV Plan' },
+                '2-36': { price: 1299.99, term: '/3-yrs', months: 36, planName: '3 Year TV Plan' },
                 // 3 Device Prices
-                '3-6':  { price: 630, term: '/6-mo', months: 6, planName: '6 Month TV Plan' },
-                '3-12': { price: 750, term: '/yr', months: 12, planName: '1 Year TV Plan' },
-                '3-36': { price: 1600, term: '/3-yrs', months: 36, planName: '3 Year TV Plan' },
+                '3-6':  { price: 629.99, term: '/6-mo', months: 6, planName: '6 Month TV Plan' },
+                '3-12': { price: 749.99, term: '/yr', months: 12, planName: '1 Year TV Plan' },
+                '3-36': { price: 1599.99, term: '/3-yrs', months: 36, planName: '3 Year TV Plan' },
             };
 
             // VOD data is simplified and always uses '1' device key as it's a fixed standard price.
             const vodPricingData = {
-                '1-6':  { price: 315, term: '/6-mo', months: 6, planName: 'Basic VOD' }, 
-                '1-12': { price: 500, term: '/yr', months: 12, planName: 'Premium VOD' },
-                '1-36': { price: 1500, term: '/3-yrs', months: 36, planName: 'Ultimate VOD' },
+                '1-6':  { price: 314.99, term: '/6-mo', months: 6, planName: 'Basic VOD' }, 
+                '1-12': { price: 499.99, term: '/yr', months: 12, planName: 'Premium VOD' },
+                '1-36': { price: 1499.99, term: '/3-yrs', months: 36, planName: 'Ultimate VOD' },
             };
 
 
@@ -961,15 +1123,15 @@
             // --- 4. BUNDLE TOTAL FUNCTION ---
             function updateBundleTotal() {
     const bundlePricing = {
-        '1-6': 650,
-        '1-12': 899,
-        '1-36': 2300,
-        '2-6': 790,
-        '2-12': 1075,
-        '2-36': 2670,
-        '3-6': 920,
-        '3-12': 1200,
-        '3-36': 2970,
+        '1-6': 649.99,
+        '1-12': 899.99,
+        '1-36': 2299.99,
+        '2-6': 789.99,
+        '2-12': 1074.99,
+        '2-36': 2669.99,
+        '3-6': 919.99,
+        '3-12': 1199.99,
+        '3-36': 2969.99,
     };
 
     const tvKey = `${selectedTVBundleDevices}-${selectedTVBundleDuration}`;
