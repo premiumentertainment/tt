@@ -10,11 +10,12 @@
         :root {
             --bg-dark: #0a0a0a; /* Deeper black background */
             --text-light: #ffffff; /* White text */
-            --accent-color: #00ff88; /* Brighter green accent */
+            --accent-color: #00ff88; /* Brighter green accent (from second design) */
             --accent-hover: #00cc6a;
             --card-bg: #1a1a1a; /* Slightly lighter card background */
             --border-color: #333333;
             --shadow-color: rgba(0, 0, 0, 0.7);
+            /* New colors for dynamic info */
             --savings-green: #00ff88;
             --max-savings-yellow: #FFC107;
             --error-red: #ff4444;
@@ -30,24 +31,21 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--bg-dark) 0%, #111111 50%, var(--bg-dark) 100%);
             color: var(--text-light);
             line-height: 1.6;
             scroll-behavior: smooth;
             min-height: 100vh;
-            -webkit-text-size-adjust: 100%;
-            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: clamp(15px, 4vw, 30px);
+            padding: 20px;
         }
 
-        /* Glass effect */
+        /* Glass effect from second design */
         .glass {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(14px);
@@ -56,39 +54,34 @@
         }
 
         h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: 3.5em;
             text-align: center;
-            padding-top: clamp(20px, 5vw, 40px);
+            padding-top: 30px;
             background: linear-gradient(90deg, var(--accent-color), var(--highlight-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-            margin-bottom: clamp(15px, 3vw, 25px);
-            line-height: 1.2;
-            font-weight: 800;
+            margin-bottom: 20px;
         }
 
         .hero-subtitle {
             text-align: center;
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            font-size: 1.2em;
             color: #cccccc;
-            max-width: 800px;
-            margin: 0 auto clamp(25px, 5vw, 40px);
+            max-width: 600px;
+            margin: 0 auto 40px;
             opacity: 0.9;
-            padding: 0 clamp(15px, 3vw, 30px);
-            line-height: 1.5;
         }
 
         h2 {
-            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-size: 2.5em;
             text-align: center;
-            margin: clamp(30px, 6vw, 60px) 0 clamp(20px, 4vw, 30px);
+            margin: 60px 0 30px;
             display: inline-block;
-            padding-bottom: clamp(8px, 1.5vw, 12px);
+            padding-bottom: 10px;
             width: 100%;
             position: relative;
-            font-weight: 700;
         }
 
         h2:after {
@@ -97,7 +90,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: clamp(60px, 15vw, 100px);
+            width: 100px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
         }
@@ -105,65 +98,48 @@
         /* ------------------- NAVIGATION ------------------- */
         nav {
             text-align: center;
-            padding: clamp(10px, 2vw, 15px) 0;
-            background: rgba(10, 10, 10, 0.98);
+            padding: 15px 0;
+            background: rgba(10, 10, 10, 0.95);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
             border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: clamp(5px, 1vw, 10px);
-            padding: 0 clamp(10px, 2vw, 20px);
         }
 
         nav a {
             color: var(--text-light);
             text-decoration: none;
+            margin: 0 15px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px);
-            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
-            flex: 0 0 auto;
-            white-space: nowrap;
-            border: 1px solid transparent;
+            transition: all 0.3s;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
         }
 
         nav a:hover {
             color: var(--accent-color);
             background: rgba(0, 255, 136, 0.1);
-            border-color: rgba(0, 255, 136, 0.3);
-            transform: translateY(-2px);
         }
 
         /* ------------------- PRICING CARD LAYOUT ------------------- */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-            gap: clamp(20px, 4vw, 30px);
-            margin-top: clamp(25px, 5vw, 40px);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .pricing-card {
             background: linear-gradient(145deg, #1a1a1a, #111111);
             border: 1px solid var(--border-color);
-            border-radius: clamp(15px, 3vw, 20px);
-            padding: clamp(20px, 4vw, 35px);
+            border-radius: 20px;
+            padding: 35px;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
-            overflow: visible;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            overflow: visible; /* Changed from hidden to visible for badges */
         }
 
         .pricing-card:before {
@@ -182,85 +158,80 @@
             border-color: var(--accent-color);
         }
         
-        /* Popular badge */
+        /* Popular badge from second design - FIXED POSITIONING */
         .popular-badge {
             position: absolute;
-            top: -clamp(12px, 2vw, 15px);
+            top: -15px; /* Positioned above the card */
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent-color);
             color: black;
-            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+            font-size: 0.8em;
             font-weight: bold;
-            padding: clamp(6px, 1.2vw, 8px) clamp(15px, 3vw, 25px);
+            padding: 8px 25px;
             border-radius: 20px;
             z-index: 2;
             box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
             white-space: nowrap;
-            min-width: clamp(110px, 20vw, 140px);
+            min-width: 140px;
             text-align: center;
         }
 
         .highlighted-card {
             border-color: var(--accent-color) !important;
+            transform: scale(1.05) !important;
             box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3) !important;
         }
 
         .pricing-card h3 {
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            margin-top: clamp(15px, 3vw, 20px);
-            margin-bottom: clamp(8px, 2vw, 12px);
+            font-size: 1.8em;
+            margin-top: 15px; /* Added margin for badge spacing */
+            margin-bottom: 10px;
             color: var(--text-light);
             background: linear-gradient(90deg, var(--accent-color), var(--highlight-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 700;
         }
 
         .price {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: 3.5em;
             font-weight: 800;
-            margin: clamp(15px, 3vw, 20px) 0 clamp(5px, 1vw, 8px);
+            margin: 20px 0 5px;
             color: var(--text-light);
             position: relative;
-            line-height: 1;
         }
         
         .price:before {
             content: 'TTD';
             position: absolute;
-            top: -clamp(15px, 2vw, 20px);
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: clamp(0.5rem, 1.2vw, 0.7rem);
+            font-size: 0.4em;
             opacity: 0.7;
-            font-weight: 500;
+            font-weight: normal;
         }
         
         .price small {
-            font-size: clamp(0.5rem, 1.2vw, 0.7rem);
+            font-size: 0.4em;
             opacity: 0.7;
             display: block;
-            margin-top: clamp(3px, 0.8vw, 5px);
-            font-weight: 500;
+            margin-top: 5px;
         }
 
         .details-list {
             list-style: none;
-            padding: clamp(15px, 3vw, 25px) 0;
+            padding: 25px 0;
             text-align: left;
-            flex-grow: 1;
-            margin: clamp(5px, 1vw, 10px) 0;
         }
 
         .details-list li {
-            padding: clamp(8px, 1.5vw, 12px) 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            align-items: flex-start;
-            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
-            line-height: 1.4;
+            align-items: center;
+            font-size: 0.95em;
         }
 
         .details-list li:last-child {
@@ -268,59 +239,56 @@
         }
         
         .details-list li span {
-            margin-right: clamp(8px, 1.5vw, 12px);
+            margin-right: 12px;
             font-weight: bold;
             color: var(--accent-color);
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            flex-shrink: 0;
-            margin-top: 1px;
+            font-size: 1.2em;
         }
 
         .cta-button {
             display: inline-block;
             background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
             color: black;
-            padding: clamp(14px, 3vw, 18px) clamp(20px, 4vw, 35px);
+            padding: 16px 35px;
             text-decoration: none;
-            border-radius: clamp(10px, 2vw, 12px);
+            border-radius: 12px;
             font-weight: 800;
-            margin-top: auto;
-            transition: all 0.3s ease;
+            margin-top: 20px;
+            transition: all 0.3s;
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1em;
             letter-spacing: 0.5px;
             width: 100%;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
         .cta-button:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
             box-shadow: 0 12px 30px rgba(0, 255, 136, 0.6);
             background: linear-gradient(90deg, var(--accent-hover), var(--accent-color));
         }
 
-        /* Sale pitch badges */
+        /* Sale pitch badges - FIXED POSITIONING */
         .sale-badge {
             display: inline-block;
             background: linear-gradient(90deg, #ff4444, #ff8800);
             color: white;
-            padding: clamp(6px, 1.2vw, 8px) clamp(15px, 3vw, 20px);
+            padding: 8px 20px;
             border-radius: 20px;
-            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+            font-size: 0.8em;
             font-weight: bold;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
             position: absolute;
-            top: clamp(25px, 5vw, 35px);
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
             white-space: nowrap;
-            min-width: clamp(110px, 20vw, 140px);
+            min-width: 140px;
             text-align: center;
-            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
@@ -331,85 +299,79 @@
 
         /* ------------------- FEATURES SECTION ------------------- */
         #features {
-            padding: clamp(40px, 8vw, 80px) 0;
+            padding: 80px 0;
         }
         
         .quality-comparison {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: clamp(20px, 4vw, 30px);
-            margin-top: clamp(25px, 5vw, 40px);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            gap: 30px;
         }
 
         .quality-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: clamp(20px, 4vw, 30px);
-            border-radius: clamp(12px, 2.5vw, 15px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 48%;
+            min-width: 280px;
+            margin-bottom: 20px;
             border-left: 5px solid var(--accent-color);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            transition: transform 0.3s;
         }
 
         .quality-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.1);
         }
         
         .quality-card h3 {
             color: var(--accent-color);
-            margin-bottom: clamp(10px, 2vw, 15px);
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            font-weight: 700;
-        }
-
-        .quality-card p {
-            font-size: clamp(0.85rem, 2.2vw, 1rem);
-            line-height: 1.5;
-            margin-bottom: clamp(8px, 1.5vw, 12px);
-            flex-grow: 1;
+            margin-bottom: 15px;
+            font-size: 1.5em;
         }
 
         /* ------------------- BUNDLE CONFIGURATOR ------------------- */
         .bundle-configurator {
             display: flex;
             flex-direction: column;
-            gap: clamp(25px, 5vw, 40px);
-            margin-top: clamp(30px, 6vw, 50px);
-            padding: clamp(20px, 4vw, 40px);
+            gap: 40px;
+            margin-top: 50px;
+            padding: 40px;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: clamp(15px, 3vw, 20px);
+            border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 136, 0.1);
         }
 
         .plan-group h3 {
             color: var(--accent-color);
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            margin-bottom: clamp(15px, 3vw, 20px);
+            font-size: 1.6em;
+            margin-bottom: 20px;
             text-align: left;
             border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-            padding-bottom: clamp(8px, 1.5vw, 12px);
-            font-weight: 700;
+            padding-bottom: 10px;
         }
 
         .plan-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-            gap: clamp(15px, 3vw, 20px);
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .plan-option-card {
+            flex: 1;
+            min-width: 180px;
             background: rgba(255, 255, 255, 0.05);
-            padding: clamp(18px, 3.5vw, 25px) clamp(15px, 2.5vw, 20px);
-            border-radius: clamp(10px, 2vw, 12px);
+            padding: 25px 20px;
+            border-radius: 12px;
             border: 2px solid transparent;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             position: relative;
-            overflow: visible;
+            overflow: visible; /* Changed for badges */
         }
 
         .plan-option-card:hover {
@@ -425,25 +387,23 @@
         }
 
         .plan-option-card h4 {
-            margin-bottom: clamp(6px, 1.2vw, 8px);
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 8px;
+            font-size: 1.3em;
             color: var(--accent-color);
-            font-weight: 700;
         }
         
         .plan-option-card p {
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-size: 0.9em;
             opacity: 0.8;
-            margin-bottom: clamp(10px, 2vw, 15px);
         }
 
         .bundle-summary {
             background: linear-gradient(145deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 255, 0.1));
-            padding: clamp(25px, 5vw, 40px);
-            border-radius: clamp(12px, 2.5vw, 15px);
+            padding: 40px;
+            border-radius: 15px;
             border: 1px solid var(--accent-color);
             text-align: center;
-            margin-top: clamp(20px, 4vw, 30px);
+            margin-top: 30px;
             position: relative;
             overflow: hidden;
         }
@@ -465,65 +425,59 @@
         }
         
         .bundle-summary h4 {
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+            font-size: 1.8em;
             color: var(--text-light);
-            margin-bottom: clamp(10px, 2vw, 15px);
-            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         #total-price-display {
-            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-size: 4em;
             font-weight: 800;
-            margin: clamp(15px, 3vw, 20px) 0;
+            margin: 20px 0;
             color: var(--savings-green);
             text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-            line-height: 1;
         }
 
         #selected-plan-details {
-            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            font-size: 1.1em;
             color: var(--text-light);
             opacity: 0.9;
-            margin-bottom: clamp(15px, 3vw, 20px);
-            line-height: 1.5;
+            margin-bottom: 20px;
         }
         
         .error-message {
             color: var(--error-red);
             font-weight: bold;
-            margin-top: clamp(8px, 1.5vw, 12px);
-            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            margin-top: 10px;
+            font-size: 1.1em;
         }
 
         /* ------------------- FOOTER/CONTACT SECTION ------------------- */
         footer {
-            background: rgba(5, 5, 5, 0.98);
-            padding: clamp(30px, 6vw, 60px) clamp(15px, 3vw, 30px);
+            background: rgba(5, 5, 5, 0.95);
+            padding: 60px 20px;
             text-align: center;
-            margin-top: clamp(40px, 8vw, 80px);
+            margin-top: 80px;
             border-top: 1px solid rgba(0, 255, 136, 0.2);
         }
 
         footer h3 {
             color: var(--accent-color);
-            margin-bottom: clamp(15px, 3vw, 25px);
-            font-size: clamp(1.3rem, 3.5vw, 2rem);
-            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 2em;
         }
 
         .contact-info p {
-            margin: clamp(10px, 2vw, 15px) 0;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            line-height: 1.5;
+            margin: 15px 0;
+            font-size: 1.1em;
         }
 
         .contact-info a {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             border-bottom: 2px solid transparent;
-            padding-bottom: 2px;
         }
 
         .contact-info a:hover {
@@ -531,98 +485,116 @@
         }
 
         .copyright {
-            margin-top: clamp(20px, 4vw, 30px);
-            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            margin-top: 30px;
+            font-size: 0.9em;
             opacity: 0.6;
         }
 
-        /* ------------------- UTILITY CLASSES ------------------- */
-        .text-center {
-            text-align: center;
-        }
-
-        .mb-20 {
-            margin-bottom: clamp(15px, 3vw, 20px);
-        }
-
-        .opacity-80 {
-            opacity: 0.8;
-        }
-
-        /* ------------------- TOUCH OPTIMIZATIONS ------------------- */
-        @media (hover: none) {
-            .pricing-card:hover {
-                transform: none;
-            }
-            
-            .cta-button:hover {
-                transform: none;
-            }
-            
-            .quality-card:hover {
-                transform: none;
-            }
-            
-            nav a:hover {
-                transform: none;
-            }
-            
-            .plan-option-card:hover {
-                transform: none;
-            }
-            
-            .plan-option-card.active-bundle-select:hover {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* ------------------- LARGE SCREEN OPTIMIZATIONS ------------------- */
-        @media (min-width: 1024px) {
+        /* ------------------- MEDIA QUERIES ------------------- */
+        @media (max-width: 1024px) {
             .pricing-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
             
-            .quality-comparison {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .plan-options {
-                grid-template-columns: repeat(2, 1fr);
+            .quality-card {
+                width: 100%;
             }
         }
 
-        /* ------------------- EXTRA SMALL SCREEN OPTIMIZATIONS ------------------- */
-        @media (max-width: 360px) {
-            .popular-badge, .sale-badge {
-                font-size: 0.6rem;
-                padding: 5px 12px;
-                min-width: 100px;
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.95em;
             }
-            
-            .pricing-card {
-                padding: 15px;
+
+            nav {
+                display: flex;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 10px;
             }
-            
             nav a {
-                padding: 6px 10px;
-                font-size: 0.7rem;
+                padding: 8px 12px;
+                margin: 0 8px;
+                font-size: 0.9em;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                padding-top: 20px;
+            }
+
+            h2 {
+                font-size: 2em;
+                margin: 40px 0 20px;
+            }
+
+            .pricing-card {
+                padding: 25px;
+            }
+
+            .price {
+                font-size: 2.8em;
+            }
+
+            .cta-button {
+                padding: 14px 0;
+                font-size: 1em;
+            }
+
+            .plan-option-card {
+                flex: 1 1 100%;
+                margin-bottom: 15px;
+            }
+
+            .bundle-configurator {
+                padding: 25px;
+                gap: 30px;
+            }
+
+            .bundle-summary {
+                padding: 25px;
+            }
+
+            #total-price-display {
+                font-size: 3em;
             }
             
-            h1 {
-                font-size: 1.8rem;
+            /* Mobile badge adjustments */
+            .popular-badge, .sale-badge {
+                font-size: 0.7em;
+                padding: 6px 15px;
+                min-width: 120px;
+                top: -12px;
             }
         }
 
-        /* ------------------- PRINT STYLES ------------------- */
-        @media print {
-            .cta-button, nav {
-                display: none !important;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            .price {
+                font-size: 2.5em;
+            }
+
+            .pricing-card {
+                padding: 20px;
+            }
+
+            nav a {
+                font-size: 0.85em;
+                padding: 6px 10px;
             }
             
-            .pricing-card {
-                break-inside: avoid;
-                box-shadow: none !important;
-                border: 1px solid #000 !important;
+            .popular-badge, .sale-badge {
+                font-size: 0.65em;
+                padding: 5px 12px;
+                min-width: 110px;
+                top: -10px;
             }
         }
     </style>
@@ -633,21 +605,19 @@
         <div class="container">
             <h1>T&T Premium Entertainment Service</h1>
             <p class="hero-subtitle">Trinidad‑friendly pricing • Fewer renewals • Best value plans • Replace Netflix & Cable with one simple solution</p>
-            <nav>
-                <div class="nav-container">
-                    <a href="#tv-show-plans">TV Plans</a>
-                    <a href="#movie-plans">Movie Plans</a>
-                    <a href="#bundle">Save with Bundles</a>
-                    <a href="#features">Why Choose Us</a>
-                    <a href="#contact">Get Setup</a>
-                </div>
+            <nav style="text-transform: uppercase;">
+                <a href="#tv-show-plans">TV Plans</a>
+                <a href="#movie-plans">Movie Plans</a>
+                <a href="#bundle">Save with Bundles</a>
+                <a href="#features">Why Choose Us</a>
+                <a href="#contact">Get Setup</a>
             </nav>
         </div>
     </header>
 
     <section id="tv-show-plans" class="container">
         <h2>Premium Live TV Packages</h2>
-        <p class="text-center opacity-80 mb-20" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
             Set it & forget it with our long-term plans. Fewer renewals mean more convenience and bigger savings. All plans include TiviMate premium app for the ultimate Firestick experience.
         </p>
 
@@ -656,7 +626,7 @@
             <!-- 6 MONTH PLAN (HIGHLIGHTED) -->
             <div class="pricing-card highlighted-card" data-duration="6mo" data-plan-name="6 Month TV Plan">
                 <div class="popular-badge">MOST POPULAR</div>
-                <div class="sale-badge" style="background: linear-gradient(90deg, var(--max-savings-yellow), #ff8800);">BIG SAVINGS</div>
+                <div class="sale-badge" style="top: 25px; background: linear-gradient(90deg, var(--max-savings-yellow), #ff8800);">BIG SAVINGS</div>
                 <h3>6 Month Plan</h3>
                 <p class="price">$450<small>Save $270 vs monthly</small></p>
                 <ul class="details-list">
@@ -677,7 +647,7 @@
             <!-- 1 YEAR PLAN -->
             <div class="pricing-card" data-duration="12mo" data-plan-name="1 Year TV Plan">
                 <div class="popular-badge">BEST VALUE</div>
-                <div class="sale-badge">CHEAPEST PER MONTH</div>
+                <div class="sale-badge" style="top: 25px;">CHEAPEST PER MONTH</div>
                 <h3>1 Year Plan</h3>
                 <p class="price">$700<small>Only $58/month</small></p>
                 <ul class="details-list">
@@ -698,7 +668,7 @@
             <!-- 3 YEAR PLAN -->
             <div class="pricing-card" data-duration="36mo" data-plan-name="3 Year TV Plan">
                 <div class="popular-badge">ULTIMATE SAVINGS</div>
-                <div class="sale-badge" style="background: linear-gradient(90deg, var(--max-savings-yellow), #ff8800);">MAXIMUM SAVINGS</div>
+                <div class="sale-badge" style="top: 25px; background: linear-gradient(90deg, var(--max-savings-yellow), #ff8800);">MAXIMUM SAVINGS</div>
                 <h3>3 Year Plan</h3>
                 <p class="price">$1500<small>Only $42/month</small></p>
                 <ul class="details-list">
@@ -722,11 +692,11 @@
 
     <section id="movie-plans" class="container">
         <h2>Cinematic Movie & Series Library</h2>
-        <p class="text-center opacity-80 mb-20" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
             Replace Netflix, Disney+, and Hulu with our massive VOD library. Thousands of movies and complete TV series collections updated weekly.
         </p>
 
-        <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));">
+        <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
             
             <!-- 1 YEAR MOVIE PLAN -->
             <div class="pricing-card highlighted-card" data-duration="12mo" data-plan-name="1 Year Movie Plan">
@@ -751,7 +721,7 @@
             <!-- 3 YEAR MOVIE PLAN -->
             <div class="pricing-card" data-duration="36mo" data-plan-name="3 Year Movie Plan">
                 <div class="popular-badge">ULTIMATE ACCESS</div>
-                <div class="sale-badge">BEST VALUE</div>
+                <div class="sale-badge" style="top: 25px;">BEST VALUE</div>
                 <h3>3 Year Movie Access</h3>
                 <p class="price">$2000<small>Only $56/month</small></p>
                 <ul class="details-list">
@@ -775,7 +745,7 @@
 
     <section id="features" class="container">
         <h2>Why Choose T&T Entertainment</h2>
-        <p class="text-center opacity-80 mb-20">The complete Trinidad streaming solution designed for convenience and value.</p>
+        <p style="text-align: center; margin-bottom: 40px; opacity: 0.8;">The complete Trinidad streaming solution designed for convenience and value.</p>
 
         <div class="quality-comparison">
             
@@ -806,7 +776,7 @@
     <!-- BUNDLE CONFIGURATOR -->
     <section id="bundle" class="container">
         <h2>Complete Entertainment Bundles</h2>
-        <p class="text-center opacity-80 mb-20" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; margin-bottom: 40px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
             Get the best of both worlds and save even more. Bundle Live TV with our massive Movie library for the ultimate entertainment package.
         </p>
 
@@ -814,7 +784,7 @@
             
             <div class="plan-group">
                 <h3>Live TV + Movies Bundle</h3>
-                <p class="opacity-80 mb-20">Combine services for maximum value and convenience.</p>
+                <p style="margin-bottom: 25px; opacity: 0.9;">Combine services for maximum value and convenience.</p>
 
                 <div class="plan-options">
                     
@@ -822,10 +792,10 @@
                     <div class="plan-option-card active-bundle-select" data-plan-type="bundle" data-duration="12" data-name="1 Year Bundle">
                         <h4>1 Year Complete Bundle</h4>
                         <p>Live TV + Movies & Series</p>
-                        <div style="margin-top: clamp(10px, 2vw, 15px); font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--accent-color); font-weight: bold;">
+                        <div style="margin-top: 15px; font-size: 1.2em; color: var(--accent-color); font-weight: bold;">
                             $1200
                         </div>
-                        <div style="font-size: clamp(0.7rem, 1.8vw, 0.8rem); opacity: 0.8; margin-top: clamp(3px, 0.8vw, 5px);">
+                        <div style="font-size: 0.8em; opacity: 0.8; margin-top: 5px;">
                             Save $300 separately
                         </div>
                     </div>
@@ -834,10 +804,10 @@
                     <div class="plan-option-card" data-plan-type="bundle" data-duration="36" data-name="3 Year Bundle">
                         <h4>3 Year Ultimate Bundle</h4>
                         <p>Everything for 3 years</p>
-                        <div style="margin-top: clamp(10px, 2vw, 15px); font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--accent-color); font-weight: bold;">
+                        <div style="margin-top: 15px; font-size: 1.2em; color: var(--accent-color); font-weight: bold;">
                             $3000
                         </div>
-                        <div style="font-size: clamp(0.7rem, 1.8vw, 0.8rem); opacity: 0.8; margin-top: clamp(3px, 0.8vw, 5px);">
+                        <div style="font-size: 0.8em; opacity: 0.8; margin-top: 5px;">
                             Save $500 separately
                         </div>
                     </div>
@@ -851,7 +821,7 @@
                     <span id="bundle-plan-summary">1 Year Complete Bundle (Live TV + Movies)</span>
                 </p>
                 <div id="total-price-display">$1200</div>
-                <p id="current-effective-rate" style="font-size: clamp(0.9rem, 2.2vw, 1rem); opacity: 0.8; margin-bottom: clamp(15px, 3vw, 25px);">
+                <p id="current-effective-rate" style="font-size: 1em; opacity: 0.8; margin-bottom: 25px;">
                     One simple payment • No monthly renewals • Everything included
                 </p>
                 <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%20Complete%20Bundle%20(1%20Year)%20for%20%241200%20(Live%20TV%20%2B%20Movies)" 
@@ -937,6 +907,22 @@
                 });
             });
 
+            // Add hover effects to all pricing cards
+            const allCards = document.querySelectorAll('.pricing-card');
+            allCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('highlighted-card')) {
+                        this.style.transform = 'translateY(0)';
+                    } else {
+                        this.style.transform = 'scale(1.05)';
+                    }
+                });
+            });
+
             // Add scroll animation for cards
             const observerOptions = {
                 threshold: 0.1,
@@ -958,18 +944,6 @@
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
-            });
-
-            // Mobile menu enhancement
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.95)';
-                });
-                
-                link.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                });
             });
         });
     </script>
