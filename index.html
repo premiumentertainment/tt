@@ -481,6 +481,29 @@
             font-size: 0.9em;
             opacity: 0.6;
         }
+        /* Custom Scaling for Mobile Readability */
+@media (max-width: 1200px) {
+    body {
+        font-size: 1.2rem; /* Increases overall text size */
+    }
+
+    h1 {
+        font-size: 4.5em !important; /* Makes the main title pop */
+    }
+
+    .price {
+        font-size: 4em !important; /* Makes the TTD price easier to see */
+    }
+
+    .cta-button {
+        padding: 20px 0; /* Makes the WhatsApp button a bigger target for thumbs */
+        font-size: 1.4em !important;
+    }
+
+    .details-list li {
+        font-size: 1.1em; /* Makes the checkmark features easier to read */
+    }
+}
 
     </style>
 </head>
@@ -962,3 +985,4 @@ if(footerWA){
 
 </body>
 </html>
+
