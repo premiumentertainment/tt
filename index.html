@@ -482,98 +482,29 @@
             opacity: 0.6;
         }
 
-        /* ------------------- MEDIA QUERIES ------------------- */
-        @media (max-width: 1024px) {
-            .pricing-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-            
-            .quality-card {
-                width: 100%;
-            }
-        }
+/* Custom Scaling for Mobile Readability */
+@media (max-width: 1200px) {
+    body {
+        font-size: 1.2rem; /* Increases overall text size */
+    }
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 0.95em;
-            }
+    h1 {
+        font-size: 4.5em !important; /* Makes the main title pop */
+    }
 
-            nav {
-                display: flex;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding: 10px;
-            }
-            nav a {
-                padding: 8px 12px;
-                margin: 0 8px;
-                font-size: 0.9em;
-            }
+    .price {
+        font-size: 4em !important; /* Makes the TTD price easier to see */
+    }
 
-            h1 {
-                font-size: 2.5em;
-                padding-top: 20px;
-            }
+    .cta-button {
+        padding: 20px 0; /* Makes the WhatsApp button a bigger target for thumbs */
+        font-size: 1.4em !important;
+    }
 
-            h2 {
-                font-size: 2em;
-                margin: 40px 0 20px;
-            }
-
-            .pricing-card {
-                padding: 25px;
-            }
-
-            .price {
-                font-size: 2.8em;
-            }
-
-            .cta-button {
-                padding: 14px 0;
-                font-size: 1em;
-            }
-
-            .plan-option-card {
-                flex: 1 1 100%;
-                margin-bottom: 15px;
-            }
-
-            .bundle-configurator {
-                padding: 25px;
-                gap: 30px;
-            }
-
-            .bundle-summary {
-                padding: 25px;
-            }
-
-            #total-price-display {
-                font-size: 3em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            h2 {
-                font-size: 1.6em;
-            }
-
-            .price {
-                font-size: 2.5em;
-            }
-
-            .pricing-card {
-                padding: 20px;
-            }
-
-            nav a {
-                font-size: 0.85em;
-                padding: 6px 10px;
-            }
-        }
+    .details-list li {
+        font-size: 1.1em; /* Makes the checkmark features easier to read */
+    }
+}
 
         .floating-wa {
     position: fixed;
