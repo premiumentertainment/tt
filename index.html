@@ -971,17 +971,38 @@ document.addEventListener('DOMContentLoaded', () => {
     <script src="assets/js/preloader.js"></script>
 
     <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69472f0d0b00e71980bdccf4/1jcv0vj2g';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+        var Tawk_API = Tawk_API || {};
+        
+        // This forces the chat bubble and window to be larger on mobile devices
+        Tawk_API.customStyle = {
+            visibility : {
+                mobile : {
+                    position : 'br',
+                    xOffset : 15,
+                    yOffset : 25
+                }
+            }
+        };
 
+        // This forces the chat window to open at a more readable size
+        Tawk_API.onLoad = function(){
+            if(Tawk_API.isMobile()) {
+                Tawk_API.setAttributes({
+                    'width' : 350,
+                    'height' : 500
+                }, function(error){});
+            }
+        };
+
+        var Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69472f0d0b00e71980bdccf4/1jcv0vj2g';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
-
-</body>
+    </body>
 </html>
