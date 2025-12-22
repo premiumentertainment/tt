@@ -546,187 +546,94 @@
 
     <section id="tv-show-plans" class="container">
         <h2>Premium Live TV Packages</h2>
-        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Set it & forget it with our long-term plans. Fewer renewals mean more convenience and bigger savings. All plans include TiviMate premium app for the ultimate Firestick experience.
-        </p>
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <p style="margin-bottom: 15px; font-weight: bold; color: var(--accent-color);">How many devices do you need?</p>
+            <div class="device-picker" style="display: inline-flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; border: 1px solid var(--accent-color);">
+                <button class="device-btn active" onclick="updateTVPrices(1)" style="background: var(--accent-color); color: black; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;">1 Device</button>
+                <button class="device-btn" onclick="updateTVPrices(2)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;">2 Devices</button>
+                <button class="device-btn" onclick="updateTVPrices(3)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;">3 Devices</button>
+            </div>
+        </div>
 
         <div class="pricing-grid">
-            
-            <!-- 6 MONTH PLAN (NOT highlighted) -->
-            <div class="pricing-card" data-duration="6mo" data-plan-name="6 Month TV Plan">
-                <!-- Badges removed -->
+            <div class="pricing-card" id="tv-6mo" data-plan-name="6 Month TV Plan">
                 <h3>6 Month Plan</h3>
-                <p class="price">$450<small>$75/month</small></p>
+                <p class="price" id="price-tv-6mo">$380<small>$63/month</small></p>
                 <ul class="details-list">
                     <li><span>✓</span> Over 20,000+ Live Channels</li>
-                    <li><span>✓</span> Premium TiviMate App Included</li>
-                    <li><span>✓</span> 4K & HD Streaming Quality</li>
-                    <li><span>✓</span> 24/7 Trinidad Support</li>
-                    <li><span>✓</span> Firestick & Android TV Optimized</li>
+                    <li><span>✓</span> Premium TiviMate App</li>
+                    <li><span>✓</span> 4K & HD Streaming</li>
+                    <li id="device-count-6mo"><span>✓</span> 1 Device Connection</li>
                     <li><span>✓</span> No Monthly Renewal Hassle</li>
                 </ul>
-                <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%206%20month%20TV%20plan%20for%20%24450" 
-                   class="cta-button" 
-                   target="_blank">
-                   GET 6 MONTHS
-                </a>
+                <a href="#" class="cta-button">GET 6 MONTHS</a>
             </div>
 
-            <!-- 1 YEAR PLAN (NOW highlighted) -->
-            <div class="pricing-card highlighted-card" data-duration="12mo" data-plan-name="1 Year TV Plan">
-                <!-- Badges removed -->
+            <div class="pricing-card highlighted-card" id="tv-1yr" data-plan-name="1 Year TV Plan">
                 <h3>1 Year Plan</h3>
-                <p class="price">$700<small>Only $58/month</small></p>
+                <p class="price" id="price-tv-1yr">$550<small>$45/month</small></p>
                 <ul class="details-list">
                     <li><span>✓</span> Over 20,000+ Live Channels</li>
-                    <li><span>✓</span> Premium TiviMate App Included</li>
-                    <li><span>✓</span> 4K & HD Streaming Quality</li>
-                    <li><span>✓</span> 24/7 Trinidad Support</li>
-                    <li><span>✓</span> Firestick & Android TV Optimized</li>
+                    <li><span>✓</span> Premium TiviMate App</li>
+                    <li id="device-count-1yr"><span>✓</span> 1 Device Connection</li>
                     <li><span>✓</span> Set it & forget it for 1 year</li>
+                    <li><span>✓</span> Best value for families</li>
                 </ul>
-                <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%201%20year%20TV%20plan%20for%20%24700" 
-                   class="cta-button" 
-                   target="_blank">
-                   GET 1 YEAR
-                </a>
+                <a href="#" class="cta-button">GET 1 YEAR</a>
             </div>
 
-            <!-- 3 YEAR PLAN (NOT highlighted) -->
-            <div class="pricing-card" data-duration="36mo" data-plan-name="3 Year TV Plan">
-                <!-- Badges removed -->
-                <h3>3 Year Plan</h3>
-                <p class="price">$1500<small>Only $42/month</small></p>
+            <div class="pricing-card" id="tv-2yr" data-plan-name="2 Year TV Plan">
+                <h3>2 Year Plan</h3>
+                <p class="price" id="price-tv-2yr">$900<small>$37/month</small></p>
                 <ul class="details-list">
                     <li><span>✓</span> Over 20,000+ Live Channels</li>
-                    <li><span>✓</span> Premium TiviMate App Included</li>
-                    <li><span>✓</span> 4K & HD Streaming Quality</li>
-                    <li><span>✓</span> 24/7 Trinidad Support</li>
-                    <li><span>✓</span> Firestick & Android TV Optimized</li>
-                    <li><span>✓</span> No renewals for 3 years</li>
-                    <li><span>✓</span> Price locked for 3 years</li>
+                    <li id="device-count-2yr"><span>✓</span> 1 Device Connection</li>
+                    <li><span>✓</span> No renewals for 2 years</li>
+                    <li><span>✓</span> Price locked for 24 months</li>
                 </ul>
-                <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%203%20year%20TV%20plan%20for%20%241500" 
-                   class="cta-button" 
-                   target="_blank">
-                   GET 3 YEARS
-                </a>
+                <a href="#" class="cta-button">GET 2 YEARS</a>
             </div>
-
         </div>
     </section>
 
     <section id="movie-plans" class="container">
         <h2>Cinematic Movie & Series Library</h2>
-        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Replace Netflix, Disney+, and Hulu with our massive VOD library. Thousands of movies and complete TV series collections updated daily.
-        </p>
-
-        <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-            
-            <!-- 1 YEAR MOVIE PLAN (highlighted) -->
-            <div class="pricing-card highlighted-card" data-duration="12mo" data-plan-name="1 Year Movie Plan">
-                <!-- Badges removed -->
+        <div class="pricing-grid" style="justify-content: center; display: flex;">
+            <div class="pricing-card highlighted-card" style="max-width: 450px;" data-plan-name="1 Year Movie Plan">
                 <h3>1 Year Movie Access</h3>
-                <p class="price">$800<small>$67/month</small></p>
+                <p class="price">$700<small>$58/month</small></p>
                 <ul class="details-list">
-                    <li><span>✓</span> Movies & Series from the BIGGEST library collection</li>
+                    <li><span>✓</span> Massive VOD library collection</li>
                     <li><span>✓</span> New releases updated daily</li>
-                    <li><span>✓</span> 4K UHD & Buffer-Free Streaming</li>
-                    <li><span>✓</span> Lightning-Fast Load Times</li>
-                    <li><span>✓</span> Trinidad-Localized Content</li>
+                    <li><span>✓</span> 4K UHD & Buffer-Free</li>
                     <li><span>✓</span> No Monthly Subscription Fees</li>
                 </ul>
-                <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%201%20year%20Movie%20plan%20for%20%24800" 
-                   class="cta-button" 
-                   target="_blank">
-                   GET MOVIES FOR 1 YEAR
-                </a>
+                <a href="#" class="cta-button">GET MOVIES FOR 1 YEAR</a>
             </div>
-
-            <!-- 3 YEAR MOVIE PLAN (NOT highlighted) -->
-            <div class="pricing-card" data-duration="36mo" data-plan-name="3 Year Movie Plan">
-                <!-- Badges removed -->
-                <h3>3 Year Movie Access</h3>
-                <p class="price">$2000<small>Only $56/month</small></p>
-                <ul class="details-list">
-                    <li><span>✓</span> Movies & Series from the BIGGEST library collection</li>
-                    <li><span>✓</span> New releases updated daily</li>
-                    <li><span>✓</span> 4K UHD & Buffer-Free Streaming</li>
-                    <li><span>✓</span> Lightning-Fast Load Times</li>
-                    <li><span>✓</span> Trinidad-Localized Content</li>
-                    <li><span>✓</span> No renewals for 3 years</li>
-                    <li><span>✓</span> Price locked for 36 months</li>
-                </ul>
-                <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%203%20year%20Movie%20plan%20for%20%242000" 
-                   class="cta-button" 
-                   target="_blank">
-                   GET MOVIES FOR 3 YEARS
-                </a>
-            </div>
-
         </div>
     </section>
 
     <!-- BUNDLE CONFIGURATOR -->
     <section id="bundle" class="container">
-        <h2>Complete Entertainment Bundles</h2>
-        <p style="text-align: center; margin-bottom: 40px; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Get the best of both worlds and save even more. Bundle Live TV with our massive Movie library for the ultimate entertainment package.
-        </p>
-
-        <div class="bundle-configurator">
-            
+        <h2>Complete Entertainment Bundle</h2>
+        <div class="bundle-configurator" style="text-align: center;">
             <div class="plan-group">
-                <h3>Live TV + Movies Bundle</h3>
-                <p style="margin-bottom: 25px; opacity: 0.9;">Combine services for maximum value and convenience.</p>
-
-                <div class="plan-options">
-                    
-                    <!-- 1 YEAR BUNDLE -->
-                    <div class="plan-option-card active-bundle-select" data-plan-type="bundle" data-duration="12" data-name="1 Year Bundle">
-                        <h4>1 Year Complete Bundle</h4>
-                        <p>Live TV + Movies & Series</p>
-                        <div style="margin-top: 15px; font-size: 1.2em; color: var(--accent-color); font-weight: bold;">
-                            $1200
-                        </div>
-                        <div style="font-size: 0.8em; opacity: 0.8; margin-top: 5px;">
-                            Save $300 separately
-                        </div>
-                    </div>
-
-                    <!-- 3 YEAR BUNDLE -->
-                    <div class="plan-option-card" data-plan-type="bundle" data-duration="36" data-name="3 Year Bundle">
-                        <h4>3 Year Ultimate Bundle</h4>
-                        <p>Everything for 3 years</p>
-                        <div style="margin-top: 15px; font-size: 1.2em; color: var(--accent-color); font-weight: bold;">
-                            $3000
-                        </div>
-                        <div style="font-size: 0.8em; opacity: 0.8; margin-top: 5px;">
-                            Save $500 separately
-                        </div>
-                    </div>
-
+                <h3>Live TV + Movies (1 Year)</h3>
+                <p style="margin-bottom: 20px;">The Ultimate Entertainment Package</p>
+                
+                <div class="device-picker" style="display: inline-flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; border: 1px solid var(--accent-color); margin-bottom: 30px;">
+                    <button class="bundle-device-btn active" onclick="updateBundlePrices(1)" style="background: var(--accent-color); color: black; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">1 Device</button>
+                    <button class="bundle-device-btn" onclick="updateBundlePrices(2)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">2 Devices</button>
+                    <button class="bundle-device-btn" onclick="updateBundlePrices(3)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">3 Devices</button>
                 </div>
             </div>
 
             <div class="bundle-summary">
-                <h4>Your Complete Entertainment Solution</h4>
-                <p id="selected-plan-details">
-                    <span id="bundle-plan-summary">1 Year Complete Bundle (Live TV + Movies)</span>
-                </p>
-                <div id="total-price-display">$1200</div>
-                <p id="current-effective-rate" style="font-size: 1em; opacity: 0.8; margin-bottom: 25px;">
-                    One simple payment • No monthly renewals • Everything included
-                </p>
-                <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20the%20Complete%20Bundle%20(1%20Year)%20for%20%241200%20(Live%20TV%20%2B%20Movies)" 
-                   id="checkout-button" 
-                   class="cta-button" 
-                   target="_blank">
-                   GET COMPLETE BUNDLE
-                </a>
+                <h4 id="bundle-title">1 Year Complete Bundle (1 Device)</h4>
+                <div id="total-price-display">$999</div>
+                <a href="#" id="checkout-button" class="cta-button">GET COMPLETE BUNDLE</a>
             </div>
-
         </div>
     </section>
 
@@ -743,8 +650,8 @@
             </div>
             
             <div class="quality-card">
-                <h3>Premium TiviMate Experience</h3>
-                <p>We include the premium TiviMate app. Enjoy a cable-like interface with favorites, recordings, and beautiful EPG. Easy to use for the whole family.</p>
+                <h3>The Premium Approach (Focus on Luxury)</h3>
+                <p><span style="font-weight: bold;">The Ultimate Entertainment Hub</span> Stop scrolling through messy apps. Our premium interface gives you a sleek, high-end experience that feels exactly like a modern cable box. Fast, organized, and designed for your big screen.</p>
             </div>
             
             <div class="quality-card">
@@ -767,8 +674,8 @@
             <div class="quality-comparison">
 
                 <div class="quality-card">
-                    <h3>🏆 Sports – The Big Ticket Content</h3>
-                    <p><strong>Rock-solid sports stability</strong> with the channels Trinidad actually watches.</p>
+                    <h3>🏆 Sports – For all the Sports Lovers</h3>
+                    <p><strong>Rock-solid sports stability</strong> with local and international channels</p>
                     <ul style="margin-top:10px; line-height:1.8;">
                         <li><strong>Caribbean Sports:</strong> SportsMax, Flow Sports & regional feeds</li>
                         <li><strong>Global Football:</strong> Premier League, La Liga, Champions League (Sky Sports UK, TNT Sports, BeIN)</li>
@@ -778,9 +685,10 @@
                 </div>
 
                 <div class="quality-card">
-                    <h3>🇺🇸 North American Channels (Trini Favorites)</h3>
-                    <p>Perfect for households that follow US television.</p>
+                    <h3>🇺🇸 Channels from all across the globe</h3>
+                    <p>Perfect for households that follow local or international television.</p>
                     <ul style="margin-top:10px; line-height:1.8;">
+                        <li><strong>Caribbean Locals:</strong> TV6, CNC3, CNN, TTT, Caribbean Sports</li>
                         <li><strong>US Locals:</strong> ABC, CBS, NBC, FOX (NY & Miami feeds)</li>
                         <li><strong>Premium Cinema:</strong> HBO, Showtime, Starz, Cinemax</li>
                         <li><strong>Entertainment:</strong> Discovery, Nat Geo, HGTV, Food Network, Bravo</li>
@@ -870,84 +778,94 @@
         </div>
     </section>
 
-    <footer id="contact">   
-        <div class="container">
+<footer id="contact" style="background: #111; padding: 40px 0; border-top: 2px solid var(--accent-color);">   
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <h3>Get Set Up Today</h3>
             <div class="contact-info">
                 <p><strong>WhatsApp Support:</strong> 
-                    <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20Firestick%20IPTV%20plans" target="_blank">
+                    <a href="https://wa.me/18683991494?text=Hi, I have read the service disclaimer and I'm interested in Firestick IPTV plans" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">
                         Click here to start WhatsApp chat
                     </a>
                 </p>
                 <p><strong>Instant Activation:</strong> Most setups completed within 1 hour</p>
                 <p><strong>Devices Supported:</strong> Firestick, Android TV, Smart TVs, Phones, Tablets</p>
             </div>
-            <p class="copyright">&copy; 2025 T&T Firestick Service. Trinidad's #1 Entertainment Solution.</p>
+
+            <div style="margin: 30px 0; padding: 20px; background: rgba(255, 255, 255, 0.05); border-left: 4px solid var(--accent-color); text-align: left; font-size: 0.85rem; color: #bbb;">
+                <h4 style="color: #fff; margin-bottom: 10px;">📌 Service Disclaimer & Usage Policy</h4>
+                <p style="margin-bottom: 8px;">• Each plan is intended for <strong>one household / one IP location only.</strong> Sharing logins or accessing from different locations will result in immediate termination of service without refund.</p>
+                <p style="color: #ff4444;">• ❌ Use of VPNs, proxy services, or logging in from multiple IP addresses is strictly prohibited.</p>
+                <p style="margin-top: 8px; font-style: italic;">By clicking the WhatsApp link above to activate service, you agree to these terms.</p>
+            </div>
+
+            <p class="copyright" style="border-top: 1px solid #333; padding-top: 20px; margin-top: 20px; color: #666;">
+                &copy; 2025 T&T Firestick Service. Trinidad's #1 Entertainment Solution.
+            </p>
         </div>
     </footer>
 
-   <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const MY_PHONE = "18683991494"; // Your Trinidad number
+<script>
+const MY_PHONE = "18683991494";
 
-    // 1. FIX FOR PRICING CARDS (TV & MOVIE)
-    const pricingButtons = document.querySelectorAll('.pricing-card .cta-button');
-    pricingButtons.forEach(btn => {
-        const card = btn.closest('.pricing-card');
+// 1. LIVE TV PRICE DATA
+const tvData = {
+    1: { '6mo': 380, '1yr': 550, '2yr': 900 },
+    2: { '6mo': 530, '1yr': 770, '2yr': 1260 },
+    3: { '6mo': 650, '1yr': 940, '2yr': 1530 }
+};
+
+// 2. BUNDLE PRICE DATA
+const bundleData = {
+    1: 999,
+    2: 1400,
+    3: 1700
+};
+
+function updateTVPrices(devices) {
+    // Update Buttons UI
+    document.querySelectorAll('.device-btn').forEach((btn, idx) => {
+        btn.style.background = (idx + 1 === devices) ? 'var(--accent-color)' : 'transparent';
+        btn.style.color = (idx + 1 === devices) ? 'black' : 'white';
+    });
+
+    // Update Card Prices & WhatsApp Links
+    const periods = ['6mo', '1yr', '2yr'];
+    periods.forEach(p => {
+        const price = tvData[devices][p];
+        const monthly = Math.round(price/(p==='6mo'?6:p==='1yr'?12:24));
+        document.getElementById(`price-tv-${p}`).innerHTML = `$${price}<small>$${monthly}/month</small>`;
+        document.getElementById(`device-count-${p}`).innerHTML = `<span>✓</span> ${devices} Device Connection${devices > 1 ? 's' : ''}`;
+        
+        const card = document.getElementById(`tv-${p}`);
         const planName = card.getAttribute('data-plan-name');
-        
-        // FIX: Grabs ONLY the price number and ignores the "OFF" text
-        const priceEl = card.querySelector('.price');
-        const priceText = priceEl.childNodes[0].textContent.trim(); 
-        
-        btn.href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the ${planName} for ${priceText}`)}`;
+        card.querySelector('.cta-button').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the ${planName} (${devices} Devices) for $${price}`)}`;
+    });
+}
+
+function updateBundlePrices(devices) {
+    // Update Buttons UI
+    document.querySelectorAll('.bundle-device-btn').forEach((btn, idx) => {
+        btn.style.background = (idx + 1 === devices) ? 'var(--accent-color)' : 'transparent';
+        btn.style.color = (idx + 1 === devices) ? 'black' : 'white';
     });
 
-    // 2. FIX FOR BUNDLE CONFIGURATOR
-    const bundleCards = document.querySelectorAll('.plan-option-card');
-    const totalPriceDisplay = document.getElementById('total-price-display');
-    const bundleSummary = document.getElementById('bundle-plan-summary');
-    const checkoutButton = document.getElementById('checkout-button');
-
-    const bundleData = {
-        '12': {
-            price: 1200,
-            message: '1 Year Complete Bundle (Live TV + Movies) for $1200'
-        },
-        '36': {
-            price: 3000,
-            message: '3 Year Ultimate Bundle (Live TV + Movies) for $3000'
-        }
-    };
-
-    bundleCards.forEach(card => {
-        card.addEventListener('click', function() {
-            bundleCards.forEach(c => c.classList.remove('active-bundle-select'));
-            this.classList.add('active-bundle-select');
-            
-            const duration = this.getAttribute('data-duration');
-            const bundle = bundleData[duration];
-            
-            if (bundle) {
-                totalPriceDisplay.textContent = `$${bundle.price}`;
-                // FIX: Added phone number to the bundle checkout link
-                checkoutButton.href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in ${bundle.message}`)}`;
-            }
-        });
-    });
-
-    // 3. FIX FOR FOOTER & FLOATING BUTTON
-    const footerWA = document.querySelector('#contact a');
-    if(footerWA) {
-        footerWA.href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent("Hi, I'm interested in Firestick plans")}`;
-    }
+    const price = bundleData[devices];
+    document.getElementById('total-price-display').textContent = `$${price}`;
+    document.getElementById('bundle-title').textContent = `1 Year Complete Bundle (${devices} Device${devices > 1 ? 's' : ''})`;
     
-    const floatingWA = document.querySelector('.floating-wa');
-    if(floatingWA) {
-        floatingWA.href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent("Hi, I have a question about your serviceS")}`;
-    }
+    document.getElementById('checkout-button').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the 1 Year Complete Bundle for ${devices} Device(s) for $${price}`)}`;
+}
 
-    // --- Animation Logic (Keep this as is) ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize prices
+    updateTVPrices(1);
+    updateBundlePrices(1);
+
+    // Set Movie Link
+    const movieCard = document.querySelector('[data-plan-name="1 Year Movie Plan"]');
+    movieCard.querySelector('.cta-button').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent("Hi, I'm interested in the 1 Year Movie Plan for $700")}`;
+
+    // Standard Animation Logic
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
