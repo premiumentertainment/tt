@@ -314,9 +314,3 @@ footer h3 {
     .details-list li { font-size: 1.1em; }
 }
 
-.container {
-  display: flex;
-  flex-direction: row; /* Forces items to stay side-by-side */
-  flex-wrap: nowrap;   /* Prevents items from dropping to a new line */
-  overflow-x: auto;    /* Optional: adds a scrollbar if it exceeds screen width */
-}
