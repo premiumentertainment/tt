@@ -2,531 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T&T Premium Entertainment Service</title>
-    
-    <style>
-        /* CSS Variables for easy color changes */
-        :root {
-            --bg-dark: #0a0a0a; /* Deeper black background */
-            --text-light: #ffffff; /* White text */
-            --accent-color: #00ff88; /* Brighter green accent (from second design) */
-            --accent-hover: #00cc6a;
-            --card-bg: #1a1a1a; /* Slightly lighter card background */
-            --border-color: #333333;
-            --shadow-color: rgba(0, 0, 0, 0.7);
-            /* New colors for dynamic info */
-            --savings-green: #00ff88;
-            --max-savings-yellow: #FFC107;
-            --error-red: #ff4444;
-            --highlight-cyan: #00ffff;
-            --highlight-yellow: #ffdd00;
-        }
-
-        /* ------------------- GLOBAL STYLES ------------------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #111111 50%, var(--bg-dark) 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Glass effect from second design */
-        .glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        h1 {
-            font-size: 3.5em;
-            text-align: center;
-            padding-top: 30px;
-            background: linear-gradient(90deg, var(--accent-color), var(--highlight-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-            margin-bottom: 20px;
-        }
-
-        .hero-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #cccccc;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            text-align: center;
-            margin: 60px 0 30px;
-            display: inline-block;
-            padding-bottom: 10px;
-            width: 100%;
-            position: relative;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-        }
-
-        /* ------------------- NAVIGATION ------------------- */
-        nav {
-            text-align: center;
-            padding: 15px 0;
-            background: rgba(10, 10, 10, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border-radius: 4px;
-            padding: 8px 16px;
-            font-size: 0.95em;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-            background: rgba(0, 255, 136, 0.1);
-        }
-
-        /* ------------------- PRICING CARD LAYOUT ------------------- */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .pricing-card {
-            background: linear-gradient(145deg, #1a1a1a, #111111);
-            border: 2px solid var(--accent-color); /* neon green outline */
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-color, #00ff88); /* glow added */
-            position: relative;
-            overflow: visible; /* Changed from hidden to visible for badges */
-        }
-
-        /* REMOVED: Top gradient line */
-        /*
-        .pricing-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--highlight-cyan));
-        }
-        */
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2), 0 0 20px var(--accent-color, #00ff88);
-            border-color: var(--accent-color);
-        }
-        
-        /* Remove Popular and Sale badges */
-        .popular-badge,
-        .sale-badge {
-            display: none !important;
-        }
-
-        .highlighted-card {
-            border-color: var(--accent-color) !important;
-            transform: scale(1.05) !important;
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3), 0 0 20px var(--accent-color, #00ff88) !important;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.8em;
-            margin-top: 15px; /* Added margin for badge spacing */
-            margin-bottom: 10px;
-            color: var(--text-light);
-            background: linear-gradient(90deg, var(--accent-color), var(--highlight-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .price {
-            font-size: 3.5em;
-            font-weight: 800;
-            margin: 20px 0 5px;
-            color: var(--text-light);
-            position: relative;
-        }
-        
-        .price:before {
-            content: 'TTD';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4em;
-            opacity: 0.7;
-            font-weight: normal;
-        }
-        
-        .price small {
-            font-size: 0.4em;
-            opacity: 0.7;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .details-list {
-            list-style: none;
-            padding: 25px 0;
-            text-align: left;
-        }
-
-        .details-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            font-size: 0.95em;
-        }
-
-        .details-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .details-list li span {
-            margin-right: 12px;
-            font-weight: bold;
-            color: var(--accent-color);
-            font-size: 1.2em;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
-            color: black;
-            padding: 16px 35px;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 800;
-            margin-top: 20px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
-            font-size: 1.1em;
-            letter-spacing: 0.5px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(0, 255, 136, 0.6);
-            background: linear-gradient(90deg, var(--accent-hover), var(--accent-color));
-        }
-
-        /* Sale pitch badges - REMOVED */
-        /*
-        .sale-badge {
-            display: inline-block;
-            background: linear-gradient(90deg, #ff4444, #ff8800);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            animation: pulse 2s infinite;
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            white-space: nowrap;
-            min-width: 140px;
-            text-align: center;
-        }
-
-        @keyframes pulse {
-            0% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.05); }
-            100% { transform: translateX(-50%) scale(1); }
-        }
-        */
-
-        /* ------------------- FEATURES SECTION ------------------- */
-        #features {
-            padding: 80px 0;
-        }
-        
-        .quality-comparison {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
-            gap: 30px;
-        }
-
-        .quality-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            width: 48%;
-            min-width: 280px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--accent-color);
-            transition: transform 0.3s;
-        }
-
-        .quality-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .quality-card h3 {
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        /* ------------------- BUNDLE CONFIGURATOR ------------------- */
-        .bundle-configurator {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 50px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 136, 0.1);
-        }
-
-        .plan-group h3 {
-            color: var(--accent-color);
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            text-align: left;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-            padding-bottom: 10px;
-        }
-
-        .plan-options {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .plan-option-card {
-            flex: 1;
-            min-width: 180px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px 20px;
-            border-radius: 12px;
-            border: 2px solid transparent;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: visible; /* Changed for badges */
-        }
-
-        .plan-option-card:hover {
-            border-color: var(--accent-hover);
-            transform: translateY(-3px);
-        }
-
-        .plan-option-card.active-bundle-select {
-            border-color: var(--accent-color);
-            background: rgba(0, 255, 136, 0.1);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .plan-option-card h4 {
-            margin-bottom: 8px;
-            font-size: 1.3em;
-            color: var(--accent-color);
-        }
-        
-        .plan-option-card p {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-
-        .bundle-summary {
-            background: linear-gradient(145deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 255, 0.1));
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid var(--accent-color);
-            text-align: center;
-            margin-top: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .bundle-summary:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 136, 0.1) 100%);
-            z-index: 0;
-        }
-        
-        .bundle-summary > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .bundle-summary h4 {
-            font-size: 1.8em;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-
-        #total-price-display {
-            font-size: 4em;
-            font-weight: 800;
-            margin: 20px 0;
-            color: var(--savings-green);
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
-
-        #selected-plan-details {
-            font-size: 1.1em;
-            color: var(--text-light);
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .error-message {
-            color: var(--error-red);
-            font-weight: bold;
-            margin-top: 10px;
-            font-size: 1.1em;
-        }
-
-        /* ------------------- FOOTER/CONTACT SECTION ------------------- */
-        footer {
-            background: rgba(5, 5, 5, 0.95);
-            padding: 60px 20px;
-            text-align: center;
-            margin-top: 80px;
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        footer h3 {
-            color: var(--accent-color);
-            margin-bottom: 25px;
-            font-size: 2em;
-        }
-
-        .contact-info p {
-            margin: 15px 0;
-            font-size: 1.1em;
-        }
-
-        .contact-info a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-
-        .contact-info a:hover {
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        .copyright {
-            margin-top: 30px;
-            font-size: 0.9em;
-            opacity: 0.6;
-        }
-
-/* Custom Scaling for Mobile Readability */
-@media (max-width: 1200px) {
-    body {
-        font-size: 1.2rem; /* Increases overall text size */
-    }
-
-    h1 {
-        font-size: 4.5em !important; /* Makes the main title pop */
-    }
-
-    .price {
-        font-size: 4em !important; /* Makes the TTD price easier to see */
-    }
-
-    .cta-button {
-        padding: 20px 0; /* Makes the WhatsApp button a bigger target for thumbs */
-        font-size: 1.4em !important;
-    }
-
-    .details-list li {
-        font-size: 1.1em; /* Makes the checkmark features easier to read */
-    }
-}
-
-        .floating-wa {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -534,7 +12,7 @@
         <div class="container">
             <h1>T&T Premium Entertainment Service</h1>
             <p class="hero-subtitle">Trinidad‑friendly pricing • Fewer renewals • Best value plans • Replace Netflix & Cable with one simple solution</p>
-            <nav style="text-transform: uppercase;">
+            <nav class="main-nav">
                 <a href="#tv-show-plans">TV Plans</a>
                 <a href="#movie-plans">Movie Plans</a>
                 <a href="#bundle">Save with Bundles</a>
@@ -547,24 +25,19 @@
     <section id="tv-show-plans" class="container">
         <h2>Premium Live TV Packages</h2>
         
-        <div style="text-align: center; margin-bottom: 40px;">
-            <p style="margin-bottom: 15px; font-weight: bold; color: var(--accent-color);">How many devices do you need?</p>
-            <div class="device-picker" style="display: inline-flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; border: 1px solid var(--accent-color);">
-                <button class="device-btn active" onclick="updateTVPrices(1)" style="background: var(--accent-color); color: black; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;">1 Device</button>
-                <button class="device-btn" onclick="updateTVPrices(2)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;">2 Devices</button>
-                <button class="device-btn" onclick="updateTVPrices(3)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;">3 Devices</button>
-            </div>
+        <div class="section-center">
+            <p class="selector-title">Dedicated Live TV Access</p>
         </div>
 
         <div class="pricing-grid">
             <div class="pricing-card" id="tv-6mo" data-plan-name="6 Month TV Plan">
                 <h3>6 Month Plan</h3>
-                <p class="price" id="price-tv-6mo">$380<small>$63/month</small></p>
+                <p class="price" id="price-tv-6mo">$320<small>$53/month</small></p>
                 <ul class="details-list">
                     <li><span>✓</span> Over 20,000+ Live Channels</li>
                     <li><span>✓</span> Premium TiviMate App</li>
                     <li><span>✓</span> 4K & HD Streaming</li>
-                    <li id="device-count-6mo"><span>✓</span> 1 Device Connection</li>
+                    <li><span>✓</span> 1 Device Connection</li>
                     <li><span>✓</span> No Monthly Renewal Hassle</li>
                 </ul>
                 <a href="#" class="cta-button">GET 6 MONTHS</a>
@@ -572,11 +45,11 @@
 
             <div class="pricing-card highlighted-card" id="tv-1yr" data-plan-name="1 Year TV Plan">
                 <h3>1 Year Plan</h3>
-                <p class="price" id="price-tv-1yr">$550<small>$45/month</small></p>
+                <p class="price" id="price-tv-1yr">$600<small>$50/month</small></p>
                 <ul class="details-list">
                     <li><span>✓</span> Over 20,000+ Live Channels</li>
                     <li><span>✓</span> Premium TiviMate App</li>
-                    <li id="device-count-1yr"><span>✓</span> 1 Device Connection</li>
+                    <li><span>✓</span> 1 Device Connection</li>
                     <li><span>✓</span> Set it & forget it for 1 year</li>
                     <li><span>✓</span> Best value for families</li>
                 </ul>
@@ -585,10 +58,10 @@
 
             <div class="pricing-card" id="tv-2yr" data-plan-name="2 Year TV Plan">
                 <h3>2 Year Plan</h3>
-                <p class="price" id="price-tv-2yr">$900<small>$37/month</small></p>
+                <p class="price" id="price-tv-2yr">$1100<small>$45/month</small></p>
                 <ul class="details-list">
                     <li><span>✓</span> Over 20,000+ Live Channels</li>
-                    <li id="device-count-2yr"><span>✓</span> 1 Device Connection</li>
+                    <li><span>✓</span> 1 Device Connection</li>
                     <li><span>✓</span> No renewals for 2 years</li>
                     <li><span>✓</span> Price locked for 24 months</li>
                 </ul>
@@ -599,50 +72,105 @@
 
     <section id="movie-plans" class="container">
         <h2>Cinematic Movie & Series Library</h2>
-        <div class="pricing-grid" style="justify-content: center; display: flex;">
-            <div class="pricing-card highlighted-card" style="max-width: 450px;" data-plan-name="1 Year Movie Plan">
-                <h3>1 Year Movie Access</h3>
-                <p class="price">$700<small>$58/month</small></p>
-                <ul class="details-list">
-                    <li><span>✓</span> Massive VOD library collection</li>
-                    <li><span>✓</span> New releases updated daily</li>
-                    <li><span>✓</span> 4K UHD & Buffer-Free</li>
-                    <li><span>✓</span> No Monthly Subscription Fees</li>
+        
+        <div class="section-center">
+            <p class="selector-title">Choose Your Movie Experience</p>
+            <div class="tier-picker">
+                <button class="tier-btn active" onclick="setMovieTier('standard')" id="btn-movie-standard">Standard Library</button>
+                <button class="tier-btn premium-btn" onclick="setMovieTier('premium')" id="btn-movie-premium">Premium Library 🌟</button>
+            </div>
+            <p id="movie-tier-desc" style="max-width: 600px; margin: 15px auto; color: #ccc; min-height: 48px;">
+                Our massive VOD collection with daily updates, excellent 4K/HD quality, and lightning-fast streaming speeds.
+            </p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card" id="movie-6mo">
+                <h3>6 Month Access</h3>
+                <p class="price" id="price-movie-6mo">$410<small>$68/month</small></p>
+                <ul class="details-list movie-details">
+                    <!-- Updated via JS -->
                 </ul>
-                <a href="#" class="cta-button">GET MOVIES FOR 1 YEAR</a>
+                <a href="#" class="cta-button movie-cta">GET 6 MONTHS</a>
+            </div>
+
+            <div class="pricing-card highlighted-card" id="movie-1yr">
+                <h3>1 Year Access</h3>
+                <p class="price" id="price-movie-1yr">$750<small>$62/month</small></p>
+                <ul class="details-list movie-details">
+                    <!-- Updated via JS -->
+                </ul>
+                <a href="#" class="cta-button movie-cta">GET 1 YEAR</a>
+            </div>
+
+            <div class="pricing-card" id="movie-2yr">
+                <h3>2 Year Access</h3>
+                <p class="price" id="price-movie-2yr">$1400<small>$58/month</small></p>
+                <ul class="details-list movie-details">
+                    <!-- Updated via JS -->
+                </ul>
+                <a href="#" class="cta-button movie-cta">GET 2 YEARS</a>
             </div>
         </div>
     </section>
 
     <!-- BUNDLE CONFIGURATOR -->
     <section id="bundle" class="container">
-        <h2>Complete Entertainment Bundle</h2>
-        <div class="bundle-configurator" style="text-align: center;">
-            <div class="plan-group">
-                <h3>Live TV + Movies (1 Year)</h3>
-                <p style="margin-bottom: 20px;">The Ultimate Entertainment Package</p>
-                
-                <div class="device-picker" style="display: inline-flex; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; border: 1px solid var(--accent-color); margin-bottom: 30px;">
-                    <button class="bundle-device-btn active" onclick="updateBundlePrices(1)" style="background: var(--accent-color); color: black; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">1 Device</button>
-                    <button class="bundle-device-btn" onclick="updateBundlePrices(2)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">2 Devices</button>
-                    <button class="bundle-device-btn" onclick="updateBundlePrices(3)" style="background: transparent; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">3 Devices</button>
-                </div>
+        <h2>Complete Entertainment Bundles</h2>
+        
+        <div class="section-center">
+            <p class="selector-title" style="margin-bottom: 5px;">Live TV + Movie Library Combo</p>
+            <p style="margin-bottom: 20px; color: #bbb;">Save massive amounts by combining TV and VOD</p>
+            <div class="tier-picker">
+                <button class="tier-btn active" onclick="setBundleTier('standard')" id="btn-bundle-standard">Standard Bundle</button>
+                <button class="tier-btn premium-btn" onclick="setBundleTier('premium')" id="btn-bundle-premium">Premium Bundle 🌟</button>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card" id="bundle-6mo">
+                <h3>6 Month Bundle</h3>
+                <p class="price" id="price-bundle-6mo">$650<small>$108/month</small></p>
+                <ul class="details-list">
+                    <li><span>✓</span> Full Live TV Package included</li>
+                    <li><span class="bundle-vod-icon">✓</span> <strong class="bundle-vod-text">Standard</strong> Movie Library</li>
+                    <li><span>✓</span> Significant bundle savings</li>
+                    <li><span>✓</span> One seamless setup</li>
+                </ul>
+                <a href="#" class="cta-button bundle-cta">GET 6 MO BUNDLE</a>
             </div>
 
-            <div class="bundle-summary">
-                <h4 id="bundle-title">1 Year Complete Bundle (1 Device)</h4>
-                <div id="total-price-display">$999</div>
-                <a href="#" id="checkout-button" class="cta-button">GET COMPLETE BUNDLE</a>
+            <div class="pricing-card highlighted-card bundle-highlight" id="bundle-1yr">
+                <h3>1 Year Bundle</h3>
+                <p class="price" id="price-bundle-1yr">$1200<small>$100/month</small></p>
+                <ul class="details-list">
+                    <li><span>✓</span> Full Live TV Package included</li>
+                    <li><span class="bundle-vod-icon">✓</span> <strong class="bundle-vod-text">Standard</strong> Movie Library</li>
+                    <li><span>✓</span> Maximum yearly value</li>
+                    <li><span>✓</span> Zero renewals for 12 months</li>
+                </ul>
+                <a href="#" class="cta-button bundle-cta">GET 1 YR BUNDLE</a>
+            </div>
+
+            <div class="pricing-card" id="bundle-2yr">
+                <h3>2 Year Bundle</h3>
+                <p class="price" id="price-bundle-2yr">$2200<small>$91/month</small></p>
+                <ul class="details-list">
+                    <li><span>✓</span> Full Live TV Package included</li>
+                    <li><span class="bundle-vod-icon">✓</span> <strong class="bundle-vod-text">Standard</strong> Movie Library</li>
+                    <li><span>✓</span> Ultimate peace of mind</li>
+                    <li><span>✓</span> Price locked for 24 months</li>
+                </ul>
+                <a href="#" class="cta-button bundle-cta">GET 2 YR BUNDLE</a>
             </div>
         </div>
     </section>
 
     <section id="features" class="container">
         <h2>Why Choose T&T Entertainment</h2>
-        <p style="text-align: center; margin-bottom: 40px; opacity: 0.8;">The complete Trinidad streaming solution designed for convenience and value.</p>
+        <p class="feature-intro">The complete Trinidad streaming solution designed for convenience and value.</p>
 
         <div class="quality-comparison">
-            
             <div class="quality-card">
                 <h3>Trinidad-Focused Support</h3>
                 <p>Local WhatsApp support that understands Trinidad time. Get help when you need it from people who speak your language. No overseas call centers, no language barriers.</p>
@@ -653,132 +181,39 @@
                 <h3>The Premium Approach (Focus on Luxury)</h3>
                 <p><span style="font-weight: bold;">The Ultimate Entertainment Hub</span> Stop scrolling through messy apps. Our premium interface gives you a sleek, high-end experience that feels exactly like a modern cable box. Fast, organized, and designed for your big screen.</p>
             </div>
-            
-            <div class="quality-card">
-                <h3>Fewer Renewals, More Convenience</h3>
-                <p>Tired of monthly payments? Our long-term plans mean fewer renewals, less hassle. Pay once for 6 months, 1 year, or even 3 years and enjoy uninterrupted entertainment.</p>
-            </div>
-            
-            <div class="quality-card">
-                <h3>Replace All Your Subscriptions</h3>
-                <p>One service replaces cable TV, Netflix, Disney+, and local streaming services. Get live TV, sports, news, movies, and series in one affordable package tailored for Trinidad.</p>
-            </div>
-
         </div>
 
-        <div style="margin-top: 70px;">
+        <div class="section-spacer-lg">
             <h3 style="text-align:center; font-size:2.2em; color: var(--accent-color); margin-bottom: 30px;">
-                Premium Live TV Content Breakdown
+                Movie & Series Platform – Standard vs. Premium
             </h3>
 
             <div class="quality-comparison">
-
                 <div class="quality-card">
-                    <h3>🏆 Sports – For all the Sports Lovers</h3>
-                    <p><strong>Rock-solid sports stability</strong> with local and international channels</p>
+                    <h3>🎬 Standard Movie Tier</h3>
+                    <p>Perfect for 95% of users. A robust, blazing-fast streaming library that easily replaces multiple mainstream subscriptions.</p>
                     <ul style="margin-top:10px; line-height:1.8;">
-                        <li><strong>Caribbean Sports:</strong> SportsMax, Flow Sports & regional feeds</li>
-                        <li><strong>Global Football:</strong> Premier League, La Liga, Champions League (Sky Sports UK, TNT Sports, BeIN)</li>
-                        <li><strong>US Sports:</strong> NFL RedZone, NBA League Pass, MLB & NHL</li>
-                        <li><strong>Cricket:</strong> Willow TV + UK & Indian feeds for T20s and internationals</li>
+                        <li><strong>Massive Library:</strong> Covers everything from timeless classics to new releases.</li>
+                        <li><strong>Great Quality:</strong> Reliable 4K and 1080p HD links that load in seconds.</li>
+                        <li><strong>Affordable:</strong> The absolute best value for everyday binging and movie nights.</li>
                     </ul>
                 </div>
 
-                <div class="quality-card">
-                    <h3>🇺🇸 Channels from all across the globe</h3>
-                    <p>Perfect for households that follow local or international television.</p>
+                <div class="quality-card" style="border-left-color: #ffd700;">
+                    <h3 style="color: #ffd700;">🌟 Premium Movie Tier</h3>
+                    <p>Built for the Audiophile & Videophile. Experience cinema exactly as the director intended, with zero compromises.</p>
                     <ul style="margin-top:10px; line-height:1.8;">
-                        <li><strong>Caribbean Locals:</strong> TV6, CNC3, CNN, TTT, Caribbean Sports</li>
-                        <li><strong>US Locals:</strong> ABC, CBS, NBC, FOX (NY & Miami feeds)</li>
-                        <li><strong>Premium Cinema:</strong> HBO, Showtime, Starz, Cinemax</li>
-                        <li><strong>Entertainment:</strong> Discovery, Nat Geo, HGTV, Food Network, Bravo</li>
-                        <li><strong>Kids:</strong> Disney, Nickelodeon, Cartoon Network, Boomerang</li>
+                        <li><strong>Uncompressed Quality:</strong> Stream 80GB+ 4K Blu-ray REMUX files effortlessly.</li>
+                        <li><strong>Dedicated Routing:</strong> Private, high-speed servers ensuring zero buffering even on the largest files.</li>
+                        <li><strong>Deeper Archives:</strong> The highest retention rates for incredibly rare, obscure, or older content.</li>
+                        <li><strong>Top-Tier Audio:</strong> Flawless Dolby Vision, Dolby Atmos, and DTS-HD Master Audio support.</li>
                     </ul>
                 </div>
-
-                <div class="quality-card">
-                    <h3>⏪ Catch-Up & On-Demand TV</h3>
-                    <p>Missed a show? Just rewind.</p>
-                    <ul style="margin-top:10px; line-height:1.8;">
-                        <li>3–7 days <strong>catch-up TV</strong> on major US & UK channels</li>
-                        <li>Pause, rewind, and replay live TV</li>
-                        <li>Massive VOD section included</li>
-                    </ul>
-                </div>
-
-                <div class="quality-card">
-                    <h3>🌍 International Content</h3>
-                    <p>Global access without juggling multiple services.</p>
-                    <ul style="margin-top:10px; line-height:1.8;">
-                        <li><strong>UK & Europe:</strong> Sky TV, BBC, ITV, European language folders</li>
-                        <li><strong>Latin America:</strong> Extensive Spanish-language channels</li>
-                        <li>Perfect for multicultural Trinidad households</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-        <div style="margin-top: 80px;">
-            <h3 style="text-align:center; font-size:2.2em; color: var(--accent-color); margin-bottom: 30px;">
-                Movie & Series Platform – Replace Every Subscription
-            </h3>
-
-            <div class="quality-comparison">
-
-                <div class="quality-card">
-                    <h3>🎬 The Largest Movie Library</h3>
-                    <p>
-                        One platform replaces Netflix, Disney+, Prime Video, and more.
-                    </p>
-                    <ul style="margin-top:10px; line-height:1.8;">
-                        <li>Movies dating back to the <strong>1950s and earlier</strong></li>
-                        <li>Latest theatrical releases added regularly</li>
-                        <li>Full TV series collections</li>
-                    </ul>
-                </div>
-
-                <div class="quality-card">
-                    <h3>🔊 True Premium Quality</h3>
-                    <p>
-                        This is not basic streaming quality.
-                    </p>
-                    <ul style="margin-top:10px; line-height:1.8;">
-                        <li><strong>4K UHD</strong> where available</li>
-                        <li><strong>Dolby Audio / Dolby Atmos</strong> support</li>
-                        <li>Ultra-quiet, buffer-free playback</li>
-                    </ul>
-                </div>
-
-                <div class="quality-card">
-                    <h3>⚡ Faster Than Netflix</h3>
-                    <p>
-                        Optimized servers with near-instant load times.
-                    </p>
-                    <ul style="margin-top:10px; line-height:1.8;">
-                        <li>No regional content locks</li>
-                        <li>No rotating libraries</li>
-                        <li>No monthly subscription stacking</li>
-                    </ul>
-                </div>
-
-                <div class="quality-card">
-                    <h3>💰 One Payment. Everything Included.</h3>
-                    <p>
-                        Stop paying for 3–5 different streaming services.
-                    </p>
-                    <ul style="margin-top:10px; line-height:1.8;">
-                        <li>Thousands saved over time</li>
-                        <li>No ads</li>
-                        <li>No surprise price hikes</li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </section>
 
-<footer id="contact" style="background: #111; padding: 40px 0; border-top: 2px solid var(--accent-color);">   
+    <footer id="contact" class="site-footer">   
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <h3>Get Set Up Today</h3>
             <div class="contact-info">
@@ -807,65 +242,131 @@
 <script>
 const MY_PHONE = "18683991494";
 
-// 1. LIVE TV PRICE DATA
-const tvData = {
-    1: { '6mo': 380, '1yr': 550, '2yr': 900 },
-    2: { '6mo': 530, '1yr': 770, '2yr': 1260 },
-    3: { '6mo': 650, '1yr': 940, '2yr': 1530 }
+const tvPrices = { '6mo': 320, '1yr': 600, '2yr': 1100 };
+const moviePrices = {
+    standard: { '6mo': 410, '1yr': 750, '2yr': 1400 },
+    premium: { '6mo': 750, '1yr': 1000, '2yr': 1850 }
+};
+const bundlePrices = {
+    standard: { '6mo': 650, '1yr': 1200, '2yr': 2200 },
+    premium: { '6mo': 900, '1yr': 1400, '2yr': 2600 }
 };
 
-// 2. BUNDLE PRICE DATA
-const bundleData = {
-    1: 999,
-    2: 1400,
-    3: 1700
-};
+const standardFeatures = `
+    <li><span>✓</span> Massive VOD library collection</li>
+    <li><span>✓</span> New releases updated daily</li>
+    <li><span>✓</span> Excellent 4K & HD Streaming</li>
+    <li><span>✓</span> Fast load times</li>
+`;
 
-function updateTVPrices(devices) {
-    // Update Buttons UI
-    document.querySelectorAll('.device-btn').forEach((btn, idx) => {
-        btn.style.background = (idx + 1 === devices) ? 'var(--accent-color)' : 'transparent';
-        btn.style.color = (idx + 1 === devices) ? 'black' : 'white';
+const premiumFeatures = `
+    <li><span style="color:#ffd700">✓</span> Everything in Standard</li>
+    <li><span style="color:#ffd700">✓</span> Uncompressed 4K REMUX</li>
+    <li><span style="color:#ffd700">✓</span> Dedicated High-Speed Servers</li>
+    <li><span style="color:#ffd700">✓</span> Deep Archives for rare content</li>
+`;
+
+let currentMovieTier = 'standard';
+let currentBundleTier = 'standard';
+
+function initPrices() {
+    // Init TV
+    ['6mo', '1yr', '2yr'].forEach(p => {
+        const price = tvPrices[p];
+        const monthly = Math.round(price / (p === '6mo' ? 6 : p === '1yr' ? 12 : 24));
+        document.getElementById(`price-tv-${p}`).innerHTML = `$${price}<small>$${monthly}/month</small>`;
+        const periodStr = p === '6mo' ? '6 Month' : p === '1yr' ? '1 Year' : '2 Year';
+        document.getElementById(`tv-${p}`).querySelector('.cta-button').href = 
+            `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the Live TV ${periodStr} Plan for $${price}`)}`;
+    });
+    
+    setMovieTier('standard');
+    setBundleTier('standard');
+}
+
+function setMovieTier(tier) {
+    currentMovieTier = tier;
+    const isPremium = tier === 'premium';
+    
+    document.getElementById('btn-movie-standard').classList.toggle('active', !isPremium);
+    document.getElementById('btn-movie-premium').classList.toggle('active', isPremium);
+    
+    document.getElementById('movie-tier-desc').innerHTML = isPremium 
+        ? "Built for Audiophiles & Videophiles. Uncompressed 4K, dedicated high-speed routing, and the deepest archives for rare content."
+        : "Our massive VOD collection with daily updates, excellent 4K/HD quality, and lightning-fast streaming speeds.";
+
+    document.querySelectorAll('.movie-details').forEach(ul => {
+        ul.innerHTML = isPremium ? premiumFeatures : standardFeatures;
     });
 
-    // Update Card Prices & WhatsApp Links
-    const periods = ['6mo', '1yr', '2yr'];
-    periods.forEach(p => {
-        const price = tvData[devices][p];
-        const monthly = Math.round(price/(p==='6mo'?6:p==='1yr'?12:24));
-        document.getElementById(`price-tv-${p}`).innerHTML = `$${price}<small>$${monthly}/month</small>`;
-        document.getElementById(`device-count-${p}`).innerHTML = `<span>✓</span> ${devices} Device Connection${devices > 1 ? 's' : ''}`;
+    // Update Movie Cards Styling based on Tier
+    ['6mo', '1yr', '2yr'].forEach(p => {
+        const card = document.getElementById(`movie-${p}`);
+        if(p === '1yr') {
+            card.style.borderColor = isPremium ? '#ffd700' : 'var(--accent-color)';
+            card.style.boxShadow = isPremium ? '0 15px 40px rgba(255, 215, 0, 0.2), 0 0 20px #ffd700' : '';
+        }
         
-        const card = document.getElementById(`tv-${p}`);
-        const planName = card.getAttribute('data-plan-name');
-        card.querySelector('.cta-button').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the ${planName} (${devices} Devices) for $${price}`)}`;
+        const price = moviePrices[tier][p];
+        const monthly = Math.round(price / (p === '6mo' ? 6 : p === '1yr' ? 12 : 24));
+        document.getElementById(`price-movie-${p}`).innerHTML = `$${price}<small>$${monthly}/month</small>`;
+        
+        const tierName = isPremium ? 'Premium' : 'Standard';
+        const periodStr = p === '6mo' ? '6 Month' : p === '1yr' ? '1 Year' : '2 Year';
+        
+        const cta = card.querySelector('.movie-cta');
+        cta.href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the ${tierName} Movie Library ${periodStr} Plan for $${price}`)}`;
+        
+        if(isPremium) {
+            cta.style.background = 'linear-gradient(90deg, #ffd700, #ffb700)';
+            cta.style.boxShadow = '0 8px 25px rgba(255, 215, 0, 0.4)';
+        } else {
+            cta.style.background = '';
+            cta.style.boxShadow = '';
+        }
     });
 }
 
-function updateBundlePrices(devices) {
-    // Update Buttons UI
-    document.querySelectorAll('.bundle-device-btn').forEach((btn, idx) => {
-        btn.style.background = (idx + 1 === devices) ? 'var(--accent-color)' : 'transparent';
-        btn.style.color = (idx + 1 === devices) ? 'black' : 'white';
-    });
-
-    const price = bundleData[devices];
-    document.getElementById('total-price-display').textContent = `$${price}`;
-    document.getElementById('bundle-title').textContent = `1 Year Complete Bundle (${devices} Device${devices > 1 ? 's' : ''})`;
+function setBundleTier(tier) {
+    currentBundleTier = tier;
+    const isPremium = tier === 'premium';
     
-    document.getElementById('checkout-button').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the 1 Year Complete Bundle for ${devices} Device(s) for $${price}`)}`;
+    document.getElementById('btn-bundle-standard').classList.toggle('active', !isPremium);
+    document.getElementById('btn-bundle-premium').classList.toggle('active', isPremium);
+
+    document.querySelectorAll('.bundle-vod-text').forEach(el => el.innerText = isPremium ? 'Premium' : 'Standard');
+    document.querySelectorAll('.bundle-vod-icon').forEach(el => el.style.color = isPremium ? '#ffd700' : 'var(--accent-color)');
+
+    ['6mo', '1yr', '2yr'].forEach(p => {
+        const card = document.getElementById(`bundle-${p}`);
+        if(p === '1yr') {
+            card.style.borderColor = isPremium ? '#ffd700' : 'var(--accent-color)';
+            card.style.boxShadow = isPremium ? '0 15px 40px rgba(255, 215, 0, 0.2), 0 0 20px #ffd700' : '';
+        }
+
+        const price = bundlePrices[tier][p];
+        const monthly = Math.round(price / (p === '6mo' ? 6 : p === '1yr' ? 12 : 24));
+        document.getElementById(`price-bundle-${p}`).innerHTML = `$${price}<small>$${monthly}/month</small>`;
+        
+        const tierName = isPremium ? 'Premium' : 'Standard';
+        const periodStr = p === '6mo' ? '6 Month' : p === '1yr' ? '1 Year' : '2 Year';
+        
+        const cta = card.querySelector('.bundle-cta');
+        cta.href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(`Hi, I'm interested in the ${tierName} Bundle (${periodStr}) for $${price}`)}`;
+
+        if(isPremium) {
+            cta.style.background = 'linear-gradient(90deg, #ffd700, #ffb700)';
+            cta.style.boxShadow = '0 8px 25px rgba(255, 215, 0, 0.4)';
+        } else {
+            cta.style.background = '';
+            cta.style.boxShadow = '';
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize prices
-    updateTVPrices(1);
-    updateBundlePrices(1);
+    initPrices();
 
-    // Set Movie Link
-    const movieCard = document.querySelector('[data-plan-name="1 Year Movie Plan"]');
-    movieCard.querySelector('.cta-button').href = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent("Hi, I'm interested in the 1 Year Movie Plan for $700")}`;
-
-    // Standard Animation Logic
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -883,44 +384,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-
-<script src="assets/js/jquery-3.6.3.min.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/preloader.js"></script>
-
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {};
-        
-        // This forces the chat bubble and window to be larger on mobile devices
-        Tawk_API.customStyle = {
-            visibility : {
-                mobile : {
-                    position : 'br',
-                    xOffset : 15,
-                    yOffset : 25
-                }
-            }
-        };
-
-        // This forces the chat window to open at a more readable size
-        Tawk_API.onLoad = function(){
-            if(Tawk_API.isMobile()) {
-                Tawk_API.setAttributes({
-                    'width' : 350,
-                    'height' : 500
-                }, function(error){});
-            }
-        };
-
-        var Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/69472f0d0b00e71980bdccf4/1jcv0vj2g';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
-    </body>
+</body>
 </html>
